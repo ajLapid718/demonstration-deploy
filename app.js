@@ -1,11 +1,14 @@
+const path = require("path");
 const express = require("express");
 const app = express();
-const PORT = process.env.PORT || 1234;
 
 app.get("/students", (req, res, next) => {
-  res.json([{id: 1, name: Abe}, {id: 2, name: Brian}, {id: 3, name: Aaron}]);
+  res.status(200).json("All of the students!!!");
 })
 
-app.listen(PORT, () => {
-  console.log(`Listening on port ${PORT}`);
-});
+let locationOfPublicFolder = path.join(__dirname, "client", "build")
+app.use(express.static(locationOfPublicFolder));
+
+app.listen(1234, () => {
+  console.log(`Listening on port 1234!!!`);
+})
